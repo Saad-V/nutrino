@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-manrope);
+  --font-body: var(--font-lato);
+
+  --color-primary: #39E079;
+  --color-secondary: #E4A24F;
+  --color-background-light: #f6f8f7;
+  --color-background-dark: #122017;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #1A2C18;
+  --color-text-main: #0f1b0e;
+  --color-text-sub: #546e52;
+
+  --color-oat-milk: #FEFDF5;
+
+  --color-tint-green: #E8F5E9;
+  --color-tint-blue: #E3F2FD;
+  --color-tint-orange: #FFF3E0;
+  --color-tint-yellow: #FFFDE7;
+  /* Light yellow for Egg */
+
+  --color-card-tint-veg: #F0FDF4;
+  /* Very light green tint */
+  --color-card-tint-non-veg: #FFFBEB;
+  /* Very light yellow/orange tint */
+
+  --color-dark-card-tint-veg: #142816;
+  --color-dark-card-tint-non-veg: #202018;
+  --color-dark-card-tint-egg: #2A2A10;
+
+  --color-protein: #E07A5F;
+  --color-carbs: #F4D35E;
+  --color-fats: #6F7D8C;
+
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-2xl: 2rem;
+
+  --shadow-soft: 0 8px 24px -6px rgba(0, 0, 0, 0.04), 0 4px 8px -4px rgba(0, 0, 0, 0.02);
+  --shadow-elevation: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: var(--color-oat-milk);
+  --foreground: var(--color-text-main);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-oat-milk);
+  color: var(--color-text-main);
+  font-family: var(--font-lato), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), sans-serif;
 }
