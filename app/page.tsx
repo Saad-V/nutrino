@@ -246,10 +246,14 @@ export default function Home() {
     setView('suggestions');
   };
 
-  const handleMealDetailsAddLog = () => {
-    // Hardcoded add for the demo Grilled Paneer
-    // 450 kcal, 22g P, 30g C, 15g F
-    addMealToLog('Grilled Paneer w/ Veg', 450, 22, 30, 15);
+  const handleMealDetailsAddLog = (meal: any) => {
+    // Dynamic add from MealDetails
+    const cals = meal.macros.calories;
+    const p = parseInt(String(meal.macros.protein).replace(/[^0-9]/g, ''));
+    const c = parseInt(String(meal.macros.carbs).replace(/[^0-9]/g, ''));
+    const f = parseInt(String(meal.macros.fats).replace(/[^0-9]/g, ''));
+
+    addMealToLog(meal.name, cals, p, c, f);
     setView('dashboard');
   };
 
@@ -268,10 +272,18 @@ export default function Home() {
     setView('add-food');
   };
 
-  const handleManualEntryAdd = () => {
-    // In a full implementation, we'd pass the actual manual entry data up.
-    // For now, let's assume a generic "Manual Entry" of 400kcal.
-    addMealToLog('Manual Entry', 400, 20, 40, 15);
+  const handleManualEntryAdd = (data: any) => {
+    const parseVal = (val: any) => {
+      if (typeof val === 'number') return val;
+      return parseInt(String(val || '0').replace(/[^0-9]/g, '') || '0');
+    };
+
+    const cals = parseVal(data.calories);
+    const p = parseVal(data.protein);
+    const c = parseVal(data.carbs);
+    const f = parseVal(data.fats);
+
+    addMealToLog(data.food_name || 'Manual Entry', cals, p, c, f);
     setView('dashboard');
   };
 

@@ -5,7 +5,7 @@ import { analyzeFoodText } from '../app/actions';
 
 interface ManualEntryProps {
     onBack: () => void;
-    onAdd: () => void;
+    onAdd: (data: any) => void;
 }
 
 export default function ManualEntry({ onBack, onAdd }: ManualEntryProps) {
@@ -183,7 +183,7 @@ export default function ManualEntry({ onBack, onAdd }: ManualEntryProps) {
                             Estimates only. You can adjust if needed.
                         </p>
                         <button
-                            onClick={onAdd}
+                            onClick={() => onAdd(result)}
                             className="w-full bg-primary hover:bg-[#4bd83b] text-white font-bold text-lg h-16 rounded-2xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 font-display"
                         >
                             <span className="material-symbols-outlined">add_circle</span>

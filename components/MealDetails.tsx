@@ -6,7 +6,7 @@ import { generateMealDetails } from '@/app/actions';
 interface MealDetailsProps {
     mealName: string;
     onBack: () => void;
-    onAddLog: () => void;
+    onAddLog: (meal: any) => void;
 }
 
 interface MealDetailData {
@@ -203,7 +203,9 @@ export default function MealDetails({ mealName, onBack, onAddLog }: MealDetailsP
             {/* Sticky Footer */}
             <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col gap-3 bg-white/90 px-6 py-4 pb-8 backdrop-blur-xl border-t border-slate-100">
                 <button
-                    onClick={onAddLog}
+                    onClick={() => {
+                        if (details) onAddLog(details);
+                    }}
                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#45e236] py-4 text-base font-bold text-black shadow-lg shadow-[#45e236]/20 transition-all hover:brightness-105 active:scale-[0.98]"
                 >
                     <span className="material-symbols-outlined">add_circle</span>
